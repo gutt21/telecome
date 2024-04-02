@@ -1,0 +1,34 @@
+Certainly! Here are 30 code-based questions for a production support role:
+
+1. Can you provide an overview of the primary programming languages and frameworks used in our codebase?
+2. How do you handle version control and branching strategies for managing code changes?
+3. What procedures are in place for code reviews and quality assurance before deploying to production?
+4. Can you explain the process for deploying code changes or updates to production?
+5. How do you ensure consistency and maintainability in the codebase across different modules or components?
+6. What measures are in place to ensure code security and compliance with coding standards?
+7. Can you discuss the process for troubleshooting and debugging code-related issues in a live environment?
+8. How do you handle rollback procedures in case of code deployment failures or issues?
+9. Can you provide insights into common code patterns or design principles used in our codebase?
+10. How do you handle third-party dependencies or libraries in our codebase, including version management?
+11. Can you explain how you handle asynchronous or background tasks in our codebase, if applicable?
+12. What strategies are employed for optimizing code performance and minimizing resource usage?
+13. Can you discuss the process for handling code hotfixes or emergency patches in production?
+14. How do you manage configuration settings and environment-specific variables in our codebase?
+15. Can you provide examples of code refactoring or optimization efforts that have been undertaken in our codebase?
+16. How do you ensure that code changes are thoroughly tested before deployment to production?
+17. Can you discuss the process for documenting code changes, updates, and known issues for future reference?
+18. What measures are in place to track and manage technical debt in our codebase?
+19. Can you provide insights into the logging and error handling mechanisms used in our codebase?
+20. How do you handle backward compatibility and versioning for APIs or interfaces in our codebase?
+21. Can you discuss any automated testing frameworks or tools used for code testing and validation?
+22. How do you handle code deployments across different environments, such as development, testing, and production?
+23. Can you explain how you ensure code modularity and maintainability in our codebase?
+24. What procedures are in place for managing code access and permissions for developers and administrators?
+25. Can you discuss the process for coordinating code changes and updates with other teams or stakeholders?
+26. How do you ensure that code changes are properly documented and communicated to relevant team members?
+27. Can you provide insights into the process for analyzing and addressing code-related performance bottlenecks?
+28. How do you handle code instrumentation and monitoring for performance and reliability metrics?
+29. Can you discuss any strategies or techniques used for code optimization and efficiency improvements?
+30. Finally, how do you prioritize and manage code-related tasks and projects in a production support role?
+
+These questions cover various aspects of code management, deployment processes, testing strategies, optimization techniques, and documentation practices in a production support role.
