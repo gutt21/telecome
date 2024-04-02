@@ -1,0 +1,24 @@
+Absolutely, when providing knowledge transfer (KT) during a production support role, you want to ensure that the recipient grasps the critical aspects of supporting the system in a live environment. Here are some tailored questions for giving KT in a production support role focusing on databases:
+
+1. What is the primary responsibility of a production support team in relation to databases?
+2. Can you provide an overview of the databases we support in our production environment?
+3. How do you access and monitor the health of databases in production?
+4. What are the key metrics or indicators you look at to assess database performance?
+5. How do you handle database-related incidents and outages in a live environment?
+6. Can you explain the process for deploying database changes or updates in production?
+7. What measures do you take to ensure data integrity and consistency in the production database?
+8. How do you manage access controls and permissions for database users in a production environment?
+9. Can you discuss the importance of backups and disaster recovery planning for production databases?
+10. What procedures do you follow to ensure that database backups are performed regularly and securely stored?
+11. How do you handle database schema changes and migrations in a production environment?
+12. Can you explain how you handle performance tuning and optimization for production databases?
+13. What steps do you take to troubleshoot and resolve database-related issues in real-time?
+14. How do you communicate with other teams, such as development or operations, during database-related incidents?
+15. Can you discuss the process for documenting database configurations, procedures, and troubleshooting steps?
+16. What security measures are in place to protect sensitive data stored in production databases?
+17. How do you handle database upgrades and patch management in a live environment?
+18. Can you provide insights into the monitoring and alerting systems used to detect database issues in production?
+19. What strategies do you employ to ensure high availability and minimize downtime for production databases?
+20. Can you share any lessons learned or best practices for supporting databases in a production environment?
+
+These questions are tailored to help the recipient understand the specific responsibilities, processes, and challenges involved in supporting databases in a production environment. They encourage discussion and knowledge sharing to ensure a thorough understanding of the role and its requirements.
