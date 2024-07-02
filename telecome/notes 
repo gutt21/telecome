@@ -1,3 +1,44 @@
+Here's a corrected version of the content from your handwritten notes:
+
+---
+
+**Chrome River Invoice**
+
+**The Purpose of This Application**
+
+Chrome River Invoice is an accounts payable (AP) application that enables users to process vendor invoices. It’s essentially used by a base of active bank colleagues who can log in to the application via Single Sign-On (SSO). They have basic abilities to create, submit, and approve invoices.
+
+There are separate roles in this application. It is role-based, meaning it has specific roles tailored to certain business sides or specialized areas, such as the accounting team or the accounts payable team in the bank.
+
+These basic users can access Chrome River to perform functions like creating, submitting, and approving invoices. Any active colleague can have access to these basic functionalities.
+
+The approval workflows and business rules are different in Chrome River Invoice. The person submitting the invoice can directly see who is going to approve it. There is a published expenditure policy for all bank colleagues. Based on this policy, there are different expense categories, and every colleague in the bank has different signing authority limits for these categories. The signing authority depends on the colleague's corporate title.
+
+The Chrome River Invoice system has a policy on item spend that ensures adherence to the bank’s expense policy. It integrates with an application called PA (Personal Authorization), which manages all colleagues' signing authority limits. This integration ensures the enforcement of the expense policy within the system.
+
+If the application is down, there is a manual process available for processing invoices manually. However, there is no way to enforce the expense policy during manual processing.
+
+---
+
+Feel free to make any additional adjustments or let me know if you need further modifications!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Chrome River Invoice is a comprehensive invoice management solution designed to automate and streamline the accounts payable (AP) process. It transforms traditional, paper-intensive AP tasks into a highly efficient, automated workflow, reducing manual entry and the risk of errors. Here are its primary functions:
 
 1. **Automated Data Capture**: Using Optical Character Recognition (OCR), Chrome River Invoice extracts data from invoices, eliminating the need for manual data entry [[❞]](https://chromeriver.com/resources/invoice).
