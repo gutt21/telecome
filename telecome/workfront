@@ -1,3 +1,51 @@
+Raising a request in Workfront involves a series of steps to ensure the request is properly documented, assigned, and tracked. Here’s a typical process:
+
+1. **Login**: Access the Workfront platform with your credentials.
+
+2. **Navigate to Requests**:
+   - Go to the "Requests" tab or section.
+
+3. **Select a Request Queue**:
+   - Choose the appropriate request queue based on the type of request you want to raise. These queues are usually categorized by department, project, or type of service.
+
+4. **Create a New Request**:
+   - Click on the option to create a new request. This is often labeled as "New Request" or similar.
+
+5. **Fill Out Request Form**:
+   - Complete the request form with all necessary details. This typically includes:
+     - Title/Subject of the request.
+     - Detailed description of the request.
+     - Priority level.
+     - Any relevant attachments or supporting documents.
+
+6. **Assign and Submit**:
+   - Assign the request to the appropriate team or individual if required.
+   - Submit the request for review.
+
+7. **Confirmation**:
+   - Receive confirmation that the request has been submitted successfully. This usually includes a reference number for tracking.
+
+8. **Track Progress**:
+   - Monitor the status of your request in the "Requests" section. You can see updates, comments, and progress.
+
+9. **Communication**:
+   - Engage in any necessary communication with the assignee via the comments section in the request to provide further information or clarification.
+
+10. **Resolution and Closure**:
+    - Once the request is resolved, you will be notified, and the request will be closed. You may need to confirm the resolution and provide feedback.
+
+This process ensures that requests are properly documented, assigned, and managed within Workfront, facilitating efficient workflow and communication.
+
+
+
+
+
+
+
+
+
+
+
 Workfront is a project management software that helps teams plan, execute, and deliver projects efficiently. It offers features like:
 
 1. **Project Planning**: Create detailed project plans, set timelines, and allocate resources.
