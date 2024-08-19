@@ -1,0 +1,13 @@
+Exacq EM (Enterprise Manager) is a software tool used for managing multiple Exacq video management system (VMS) servers and their associated video surveillance devices. It provides centralized monitoring, management, and reporting for large-scale video security systems. Key features of Exacq EM include:
+
+1. **Centralized Management**: Allows administrators to manage and configure multiple Exacq servers and devices from a single interface.
+  
+2. **Health Monitoring**: Monitors the health and status of all connected devices, such as cameras and storage systems, alerting administrators to any issues.
+
+3. **User Management**: Facilitates centralized user management, including adding or removing users, setting permissions, and controlling access to video feeds.
+
+4. **Reporting**: Provides detailed reports on system usage, device status, and other operational metrics.
+
+5. **Scalability**: Designed to scale with the needs of large organizations, supporting hundreds or thousands of devices across multiple locations.
+
+Exacq EM is often used in large organizations or environments where security and surveillance are critical, such as in corporate campuses, retail chains, and government facilities.
