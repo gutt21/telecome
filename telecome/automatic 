@@ -1,0 +1,83 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+public class URLHealthcheck {
+
+	
+	
+	
+	public static void main(String[] args) {
+		String url="C:\\Users\\akash\\eclipse-workspace\\2024\\Practice\\text\\url.txt";
+		   List<String> readurlfromfile = readurlfromfile(url);
+		    ExcelLogger.init();
+		   for(String url1:readurlfromfile) {
+			   checkhealth(url1);
+		   }
+	}
+	
+	
+	public static List<String> readurlfromfile(String path){
+		List<String> urls = new ArrayList<>();
+		
+try {
+			
+			FileReader read=new FileReader(path);
+			BufferedReader file=new BufferedReader(read);
+		    String line=file.readLine();
+	   
+			while(line!=null) {
+				
+				if(!line.trim().isEmpty()) {
+					urls.add(line.trim());
+					
+				}
+				line=file.readLine();
+		
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+           return urls;
+		
+	}
+	
+	
+	public static void checkhealth(String url) {
+		try {
+			String trim = url.split("=")[1].trim();
+			String screenshot="C:\\Users\\akash\\eclipse-workspace\\2024\\Practice\\Screenshots\\"+url.split("=")[0].trim()+".png";
+					
+			URL ur=new URL(trim);
+			
+			 HttpURLConnection connection = (HttpURLConnection) ur.openConnection();
+
+	            // Set the request method (optional, GET is default)
+	            connection.setRequestMethod("GET");
+                connection.setConnectTimeout(9000);
+	            // Connect to the URL
+	            connection.connect();
+	            
+			   String responseMessage = connection.getResponseMessage();
+	            int responseCode = connection.getResponseCode();
+	            if (responseCode == HttpURLConnection.HTTP_OK) {
+	            	ScreenshotsUtil.capture(trim, screenshot);
+	            	ExcelLogger.init();
+	            	ExcelLogger.log(trim, responseMessage, responseCode, screenshot);
+	            	ExcelLogger.save();
+	                System.out.println("HTTP connection to  " + url.split("=")[0].trim() + " successful. Response Code: " + responseCode +" = "+ responseMessage);
+	            } else {
+	                System.out.println("HTTP connection to " + ur + " failed. Response Code: " + responseCode);
+	            }
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	
+}
