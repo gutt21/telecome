@@ -276,3 +276,49 @@ Writable
 Smart Insert
 129: 14: 4622
 
+
+
+
+
+
+import java.io.FileInputStream;
+import java.util.Properties;
+5
+6
+public class config2 read {
+« Zipunzip.java
+9
+10
+11
+12
+130
+11.4
+private Properties prop;
+public config2_read() (
+String file="C: \\Users\\10728653\\Documents\\NEWKafka\\Unzip\\config2-properties";
+FileInputStream input=new FileInputStream(file);
+prop=new Properties);
+prop. load (input) ;
+} catch (Exception e) {
+e. printStackTrace();
+36372829
+public String Docments() {
+return prop-getProperty("Docments");
+}
+public String Fail() {
+return prop-getProperty ("Fail*);
+public String Temp()
+return prop. getProperty ("Temp") ;
+
+
+
+
+
+
+
+
+
+
+
+
+
