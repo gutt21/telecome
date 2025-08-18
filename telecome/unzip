@@ -367,6 +367,114 @@ public class ExcelHelper {
 
 
 
+import org.apache.poi.ss.usermodel.Row;
 
+import java.io.*;
+import java.nio.file.*;
+import java.util.Iterator;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+
+public class FilenetAutomation {
+
+    public static void main(String[] args) {
+        Path documentsFolder = Paths.get("C:\\Tpelaazy2xdueltesp_apps\\ESP_PROG\\PRD_RLDS_ECNB_33902_DOCUTECHDOCUMENTS_FILENETUPLOAD\\DOCUMENTS");
+        Path failedFolder = Paths.get("M:\\Tpe1aszy2xdu81\\esp_apps\\ESP_PROG\\PRD_RLDS_ECNB_33982_DOCUTECHDOCUMENTS_FILENETUPLOAD\\FAILED");
+        Path tempFolder = Paths.get("\\\\Tpelaazy2xduß1\\esp_apps\\ESP_DATA\\PRD_RLDS_ECNB_33902_DOCUTECHDOCUMENTS_FILENETUPLOAD\\TEMP_IN");
+        Path processedFolder = Paths.get("C:\\Tpelaazy2duel\\esp_apps\\PRD_RLDS_ECNB_33982_DOCUTECHDOCUMENTS_FILENETUPLOAD\\PROCESSED");
+
+        String inputExcel = "C:\\Users\\YourName\\Desktop\\input.xlsx";
+        String outputExcel = "C:\\Users\\YourName\\Desktop\\output.xlsx";
+
+        try {
+            ExcelHelper excel = new ExcelHelper(inputExcel);
+            Iterator<Row> rowIterator = excel.getRowIterator();
+
+            while (rowIterator.hasNext()) {
+                Row row = rowIterator.next();
+                if (row.getCell(0) == null) continue;
+
+                String fileName = row.getCell(0).getStringCellValue().trim();
+                if (!fileName.endsWith(".zip")) fileName += ".zip";
+
+                String status;
+
+                try {
+                    Path docFolderCheck = documentsFolder.resolve(fileName.replace(".zip", ""));
+                    Path failZipCheck = failedFolder.resolve(fileName);
+
+                    if (Files.exists(docFolderCheck)) {
+                        status = "Already exists in Documents";
+                    } else if (Files.exists(failZipCheck)) {
+                        // Move zip → Temp
+                        Path zipInTemp = tempFolder.resolve(fileName);
+                        Files.move(failZipCheck, zipInTemp, StandardCopyOption.REPLACE_EXISTING);
+
+                        // Unzip into Temp
+                        Path unzipFolder = unzipFile(zipInTemp, tempFolder);
+
+                        if (Files.exists(zipInTemp) && Files.exists(unzipFolder)) {
+                            // Move extracted folder → Documents
+                            Files.move(unzipFolder, documentsFolder.resolve(unzipFolder.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+                            // Move zip → Processed
+                            Files.move(zipInTemp, processedFolder.resolve(zipInTemp.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+                            status = "Processed successfully";
+                        } else {
+                            status = "Error: Missing zip/unzip in Temp";
+                        }
+                    } else {
+                        status = "Not found in Failed or Documents";
+                    }
+                } catch (Exception e) {
+                    status = "Error: " + e.getMessage();
+                }
+
+                // Write to Excel
+                excel.writeResult(fileName, status);
+            }
+
+            excel.saveOutput(outputExcel);
+            System.out.println("✅ Completed. Output written to " + outputExcel);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Unzips a file into a target folder.
+     * @param zipFile path of the zip file
+     * @param targetFolder where to unzip
+     * @return Path of the extracted folder
+     * @throws IOException
+     */
+    private static Path unzipFile(Path zipFile, Path targetFolder) throws IOException {
+        String folderName = zipFile.getFileName().toString().replace(".zip", "");
+        Path unzipFolder = targetFolder.resolve(folderName);
+        Files.createDirectories(unzipFolder);
+
+        try (ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFile.toFile()))) {
+            ZipEntry entry;
+            while ((entry = zis.getNextEntry()) != null) {
+                Path newPath = unzipFolder.resolve(entry.getName());
+                if (entry.isDirectory()) {
+                    Files.createDirectories(newPath);
+                } else {
+                    Files.createDirectories(newPath.getParent());
+                    try (BufferedOutputStream bos = new BufferedOutputStream(Files.newOutputStream(newPath))) {
+                        byte[] buffer = new byte[1024];
+                        int len;
+                        while ((len = zis.read(buffer)) > 0) {
+                            bos.write(buffer, 0, len);
+                        }
+                    }
+                }
+                zis.closeEntry();
+            }
+        }
+
+        return unzipFolder;
+    }
+}
 
 
