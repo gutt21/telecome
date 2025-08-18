@@ -253,3 +253,26 @@ zis.closeEntry();
 
 
 
+
+
+public static void unzip(Path zipfilepath, Path destdir) throws Exception {
+String foldername=zipfilepath-getFileNane()-toString()-replace("-zip",
+Path unzipfolder = destdir.resolve (foldername):
+Files.createDirectories(unzipfolder);
+try(ZipInputStream zis-new ZipInputStream(new FileInputStream(zipfilepath.toFile()))) {
+ZipEntry zipEntry: while((zipEntry=zis-getNextEntry())!=null) k
+Path newfilepath=unzipfolder.resolve(zipEntry-getName());
+if (zipEntry. isDirectory()) {
+Files. createDirectories(newfilepath);
+Files.createDirectories(newfilepath.getParent());
+try(BufferedOutputStream bos=new BufferedOutputStream(Files.newOutputStream(newfilepath))){
+byte[] buffer-new byte[1024]; int len;
+while (len=zis.read (buffer))>0) {
+bos write(buffer, 0, len);
+zis, closeEntry();
+}catch (Exception e) {
+// TODO: handle exception
+Writable
+Smart Insert
+129: 14: 4622
+
