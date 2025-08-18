@@ -1,0 +1,255 @@
+VKafka-Unzip/src/folder/Zipunzip.java - Spring Tool Suite 4
+Edit
+Source
+Refactor
+Source
+Navigate
+Search
+Project
+Run
+Window
+Help
+0-0-
+config.properties
+Akash2.java
+ExcelLogger.java
+config2.properties
+Zipunzip.ja
+1 package folder;
+2
+30 import java.io.BufferedOutputStream;
+4 import java.io.FileInputStream;
+5 import java.io.IOException;
+6 import java.nio.file.DirectoryStream;
+7 import java.nio.file.Files;
+8 import java.nio.file.Path;
+9 import java.nio.file.Paths;
+10 import java.nio.file.StandardCopyOption;
+11 import java.util.logging.FileHandler;
+12 import java.util.logging.Level;
+13 import java.util.logging.Logger;
+14 import java.util.logging.SimpleFormatter;
+15 import java.util.zip.ZipEntry;
+16 import java.util.zip.ZipInputStream; 17
+18 public class Zipunzip {
+19
+20
+21 private static config2_read config2_read=new config2_read();
+22 23 private static final Logger log Logger.getLogger(Zipunzip.class.getName());
+246
+25
+26
+27
+28
+29
+30
+32
+public static void main(String[] args) {
+try {
+// Create a FileHandler that writes log to "app.log"
+FileHandler fileHandler = new FileHandler("app.log", true); // 'true' en fileHandler.setFormatter(new SimpleFormatter()); // Optional: format the
+Log.addHandler(fileHandler);
+32
+33
+34
+35
+36
+37
+38
+ad
+} catch (IOException e) {
+} Log.log(Level. SEVERE, "Failed to set up file handler", e);
+Path docmentsfolder-Paths.get(config2_read.Docments());
+Dath fotlodfolder-Dathe cat/confing rond Fai٦/١١٠
+Q
+Search
+L
+
+
+Source Refactor
+Source
+Navigate
+Search
+Window
+Help
+Project
+Run
+config.properties
+22
+23
+Ju
+246
+25
+26
+27
+Akash2.java
+ExcelLogger.java
+config2.properties
+Zipunzip.java X
+config2.properties
+app.log
+private static final Logger Log Logger.getLogger(Zipunzip.class.getName());
+public static void main(String[] args) {
+config2_read.java
+try {
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+46
+41
+// Create a FileHandler that writes log to "app.log"
+FileHandler fileHandler = new FileHandler("app.log", true); // 'true' enables appending fileHandler.setFormatter (new SimpleFormatter()); // Optional: format the output Log.addHandler(fileHandler);
+} catch (IOException e) {
+}
+Log.log(Level.SEVERE, "Failed to set up file handler, e);
+Path docmentsfolder-Paths.get(config2_read.Docments());
+Path failedfolder Paths.get(config2_read.Fail());
+Path tempfolder Paths.get(config2_read.Temp());
+Path processFolder Paths.get(config2_read.Processed());
+I
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+try {
+Log.setLevel(Level.ALL); // Log everything for(Path zipfile:stream) {
+DirectoryStream<Path> stream-Files.newDirectoryStream(failedfolder,"*.zip");
+String basename-zipfile.getFileName().toString().replace(".zip",""); Path targetdocments docmentsfolder.resolve(basename);
+//skip if already existing in documents if(Files.exists(targetdocments)) {
+}
+System.out.println("File is already Existing = "+basename); Log.warning(String.format("File already exists: %s", basename));
+continue;
+//move zip form fail to tem
+Dath vininter tannfaidar rernual-infila natFilalama/11
+
+
+
+
+
+
+//skip if already existing in documents if(Files.exists(targetdocments)) {
+}
+app.log
+config2_read.java
+System.out.println("File is already Existing = "+basename); Log.warning(String.format("File already exists: %s", basename));
+continue;
+//move zip form fail to temp
+Path zipintem = tempfolder.resolve(zipfile.getFileName()); Files.move(zipfile, zipintem, Standard CopyOption.REPLACE_EXISTING);
+/ System.out.println("moved zip to temp");
+/Log.info(String.format("Moved zip to temp: %s", zipintem));
+//unzip
+unzip(zipintem, tempfolder);
+// System.out.println("Unzipped folder=" + zipintem); Log.info(String.format("Unzipped folder: %s", zipintem));
+//chcek if both zip nad unzip folder existing in temp Path extreatedtempfolder = tempfolder.resolve(basename);
+if(!Files.exists (zipintem) ||! Files.exists(extreatedtempfolder)) { // System.out.println("Error: Temp folder does not contain both");
+}
+/*
+Log.info("Error: Temp folder does not contain both = "+ zipintem);
+continue;
+*//extreacted folder -> docments String extractfoldername =
+zipfile.getFileName().toString(); Path extractfolder=tempfolder.resolve(extractfoldername);
+if(Files.exists(extractfolder)) { Files.move(extractfolder, docmentsfolder.resolve(extractfoldername), StandardCopyOption.REPLACE_EXISTING
+
+
+
+config.properties
+Akash2.java
+ExcelLogger.java
+config2.properties
+91
+Zipunzip.java
+config2.properties
+app.log
+config2_read.java
+92
+93
+94
+95
+//move zip folder to docments
+Files.move(extreatedtempfolder, targetdocments, Standard CopyOption.REPLACE_EXISTING);
+Log.info("Moved zip to Docments = " + basename);
+// System.out.println("Moved zip to processsed"+basename);
+//move
+96
+97
+98
+99
+Files.move (zipintem, processFolder.resolve(zipfile.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+//System.out.println("Moved zip to processsed"+zipfile.getFileName()); Log.info("Moved zip to processsed = " + basename);
+100
+}
+101
+102
+}catch (Exception e) {
+103
+// TODO: handle exception
+104
+}
+105
+I
+106
+}
+107
+1080
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+String foldername=zipfilepath.getFileName().toString().replace(".zip", "");
+Path unzipfolder = destdir.resolve(foldername);
+try(ZipInputStream zis=new ZipInputStream(new FileInputStream(zipfilepath.toFile()))) {
+Files.createDirectories (unzipfolder);
+ZipEntry zipEntry;
+while((zipEntry=zis.getNextEntry())!=null) {
+Path newfilepath unzipfolder.resolve(zipEntry.getName());
+if(zipEntry.isDirectory()) {
+Files.createDirectories (newfilepath);
+}else {
+119
+120
+121
+122
+123
+124
+Files.createDirectories (newfilepath.getParent());
+try(BufferedOutputStream bos=new BufferedOutputStream(Files.newOutputStream(newfilepath))){
+byte[] buffer-new byte[1024];
+while((len=zis.read(buffer))>0) {
+int len;
+bos.write(buffer, 0, len);
+125
+126
+127
+128
+}
+}
+}
+zis.closeEntry();
+
+
+
