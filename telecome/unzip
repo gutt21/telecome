@@ -312,7 +312,55 @@ return prop. getProperty ("Temp") ;
 
 
 
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.*;
+import java.util.Iterator;
+
+public class ExcelHelper {
+
+    private Workbook inWb;
+    private Workbook outWb;
+    private Sheet inSheet;
+    private Sheet outSheet;
+    private int rowNum = 0;
+
+    public ExcelHelper(String inputPath) throws IOException {
+        FileInputStream fis = new FileInputStream(inputPath);
+        inWb = new XSSFWorkbook(fis);
+        inSheet = inWb.getSheetAt(0);
+
+        outWb = new XSSFWorkbook();
+        outSheet = outWb.createSheet("Results");
+
+        // Header row
+        Row header = outSheet.createRow(rowNum++);
+        header.createCell(0).setCellValue("FileName");
+        header.createCell(1).setCellValue("Status");
+    }
+
+    // Iterator for rows in input Excel
+    public Iterator<Row> getRowIterator() {
+        return inSheet.iterator();
+    }
+
+    // Append result into output Excel
+    public void writeResult(String fileName, String status) {
+        Row outRow = outSheet.createRow(rowNum++);
+        outRow.createCell(0).setCellValue(fileName);
+        outRow.createCell(1).setCellValue(status);
+    }
+
+    // Save output Excel to disk
+    public void saveOutput(String outputPath) throws IOException {
+        try (FileOutputStream fos = new FileOutputStream(outputPath)) {
+            outWb.write(fos);
+        }
+        outWb.close();
+        inWb.close();
+    }
+}
 
 
 
