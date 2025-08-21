@@ -478,3 +478,77 @@ public class FilenetAutomation {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+////////text
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+
+public class TextLogger {
+    private final BufferedWriter performanceWriter;
+    private final BufferedWriter existingWriter;
+    private final BufferedWriter notFoundWriter;
+
+    public TextLogger(Path performanceFile, Path existingFile, Path notFoundFile) throws IOException {
+        performanceWriter = Files.newBufferedWriter(performanceFile, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        existingWriter = Files.newBufferedWriter(existingFile, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        notFoundWriter = Files.newBufferedWriter(notFoundFile, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+    }
+
+    public void logPerformance(String fileName) {
+        try {
+            performanceWriter.write(fileName + " = performance done");
+            performanceWriter.newLine();
+            performanceWriter.flush();
+            System.out.println(fileName + " → performance done");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void logExisting(String fileName) {
+        try {
+            existingWriter.write(fileName + " = already existing in documents");
+            existingWriter.newLine();
+            existingWriter.flush();
+            System.out.println(fileName + " → already existing in documents");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void logNotFound(String fileName, String reason) {
+        try {
+            notFoundWriter.write(fileName + " = " + reason);
+            notFoundWriter.newLine();
+            notFoundWriter.flush();
+            System.out.println(fileName + " → " + reason);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void close() {
+        try {
+            performanceWriter.close();
+            existingWriter.close();
+            notFoundWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
